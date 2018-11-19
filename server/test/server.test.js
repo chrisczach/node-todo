@@ -36,9 +36,8 @@ describe('Post /todos', () => {
       .post('/todos')
       .send({})
       .expect(400)
-      .expect(res => expect(res.body.errors.text.name).toBe('ValidatorError'))
       .end((err, res) => {
-        if (!err) {
+        if (err) {
           return done(err);
         }
 
@@ -46,7 +45,7 @@ describe('Post /todos', () => {
           expect(todos.length).toBe(0);
           done();
         })
-        .catch(err = done(err));
+        .catch(err => done(err));
       });
   });
 });
