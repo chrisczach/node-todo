@@ -26,7 +26,7 @@ app.get('/todos', (req, res) => {
   (err) => res.status(400).send(err)
   )
 
-})
+});
 
 app.listen(port, () => console.log(`started on port ${port}`));
 
