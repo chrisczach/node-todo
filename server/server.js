@@ -38,6 +38,11 @@ app.get('/todos/:id', (req, res) => {
 
 });
 
+app.delete('/todos/:id', (req, res) => {
+  Todo.findByIdAndDelete(req.params.id)
+  .then(todo => todo ? res.send({todo}) : res.status(404).send())
+  .catch(e => res.status(400).send(e))
+
 app.listen(port, () => console.log(`started on port ${port}`));
 
 module.exports = {app};
