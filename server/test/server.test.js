@@ -112,8 +112,14 @@ describe('DELETE /todos/:id', () => {
       .end((err, res) => {
         if (err) {
           return done(err);
-        }
-        done();
+        };
+        Todo.findById(hexId)
+          .then(todo => {
+            console.log(todo);
+            expect(todo).toBe(null);
+            done();
+          })
+          .catch(err => done(err));
       });
   });
 
