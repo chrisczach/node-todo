@@ -102,3 +102,28 @@ describe('GET /todos/:id', () => {
   })
 
 })
+
+describe('DELETE /todos/:id', ()=>{
+it('should remove a todo', (done)=>{
+const hexId = todos[1].toHexString();
+request(app)
+  .delete(`/todos/${hexId}`)
+  .expect(200)
+  .expect(res => {
+    expect(res.body.todo._id).toBe(hexId)
+  })
+  .end((err, res) => {
+          if(err) return {done(err)};
+
+  })
+})
+
+if('should return 404 if todo not found', (done) => {
+
+})
+
+if('should return 404 if todo ID is invalid', (done) => {
+  
+})
+
+})
